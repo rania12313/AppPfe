@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <!-- Favicon -->
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" routerLink="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <app-admin-sidebar></app-admin-sidebar>
+
+      <div class="main-wrapper">
+        <app-top-bar></app-top-bar>
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <div class="section-title">
+              <h4>Liste des quizzes</h4>
+            </div>
+            <br />
+
+            <mat-card class="card-margin" *ngFor="let q of quizzes">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+
+                <mat-card-title>{{ q.title }}</mat-card-title>
+
+                <mat-card-subtitle>{{ q.category.title }}</mat-card-subtitle>
+              </mat-card-header>
+
+              <mat-card-content>
+                <p>{{ q.description }}</p>
+              </mat-card-content>
+
+              <mat-card-actions>
+                <a
+                  [routerLink]="'/view-questions/' + q.qid + '/' + q.title"
+                  mat-flat-button
+                  color="warn"
+                >
+                  Questions
+                </a>
+
+                <button mat-stroked-button color="warn" class="margin">
+                  Max Marks {{ q.maxMarks }}
+                </button>
+
+                <button mat-stroked-button color="warn" class="margin">
+                  Questions : {{ q.numberOfQuestions }}
+                </button>
+
+                <a
+                  [routerLink]="'/quiz/' + q.qid"
+                  mat-flat-button
+                  color="warn"
+                  class="margin"
+                >
+                  Update
+                </a>
+
+                <button mat-flat-button color="warn" class="margin">
+                  Attempts
+                </button>
+
+                <button
+                  mat-flat-button
+                  color="warn"
+                  class="margin"
+                  (click)="deleteQuiz(q.qid)"
+                >
+                  Delete
+                </button>
+              </mat-card-actions>
+            </mat-card>
+
+            <div class="container text-center mt20">
+              <a routerLink="/add-quiz" mat-raised-button color="primary">
+                Add New Quiz
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

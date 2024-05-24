@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <!-- Favicon -->
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" routerLink="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <app-admin-sidebar></app-admin-sidebar>
+
+      <div class="main-wrapper">
+        <app-top-bar></app-top-bar>
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <br />
+
+            <h1 class="mt20">Questions of {{ qTitle }}</h1>
+
+            <div class="bootstrap-wrapper">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="container mt-4 mb-3 mtb10">
+                    <a
+                      mat-raised-button
+                      color="primary"
+                      [routerLink]="'/add-question/' + qId + '/' + qTitle"
+                    >
+                      Ajouter Question
+                    </a>
+                  </div>
+
+                  <mat-card
+                    *ngFor="let q of questions; let i = index"
+                    class="mt20 mtb20"
+                  >
+                    <mat-card-content>
+                      <p class="d-flex flex-row">
+                        <b>Q{{ i + 1 }}) </b>
+                        <span class="ml120 ml-1" [innerHTML]="q.content"></span>
+                      </p>
+
+                      <div class="container-fluid mt-2 mb-2">
+                        <div class="row gap-2">
+                          <div class="col-md-6">
+                            <p><b>1)</b> {{ q.option1 }}</p>
+                          </div>
+
+                          <div class="col-md-6">
+                            <p><b>2)</b> {{ q.option2 }}</p>
+                          </div>
+
+                          <div class="col-md-6">
+                            <p><b>3)</b> {{ q.option3 }}</p>
+                          </div>
+
+                          <div class="col-md-6">
+                            <p><b>4)</b> {{ q.option4 }}</p>
+                          </div>
+                        </div>
+
+                        <!-- ligne de séparation -->
+                        <mat-divider></mat-divider>
+
+                        <p class="mt-2">
+                          <b>Bonne réponse: {{ q.answer }}</b>
+                        </p>
+                      </div>
+
+                      <mat-card-content>
+                        <mat-card-actions>
+                          <button
+                            mat-button
+                            (click)="deleteQuestion(q.quesId)"
+                            color="warn"
+                          >
+                            Supprimer
+                          </button>
+
+                          <button mat-button color="primary">Modifier</button>
+                        </mat-card-actions>
+                      </mat-card-content>
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

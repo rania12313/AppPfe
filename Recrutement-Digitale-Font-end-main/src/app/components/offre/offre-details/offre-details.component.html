@@ -1,0 +1,198 @@
+<!-- <app-navbar></app-navbar> -->
+<section id="pricing" class="pricing sections-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="row g-4 py-lg-5" data-aos="zoom-out" data-aos-delay="100">
+      <div class="col-lg-8" style="margin-left: 300px; margin-top: 20px">
+        <div class="pricing-item">
+          <div class="icon">
+            <i class="bi bi-box"></i>
+          </div>
+          <h3>{{ offre.nom }}</h3>
+
+          <ul>
+            <li><i class="bi bi-check"></i>{{ offre.sujet }}</li>
+            <li><i class="bi bi-check"></i>{{ offre.description }}</li>
+
+            <li>
+              <i class="bi bi-check"></i> <span> {{ offre.competences }}</span>
+            </li>
+            <li>
+              <i class="bi bi-check"></i> <span> {{ offre.dateCreation }}</span>
+            </li>
+            <li>
+              <i class="bi bi-check"></i> <span> {{ offre.typeContrat }}</span>
+            </li>
+          </ul>
+          <div class="text-center">
+            <button
+              (click)="verifyAuth()"
+              class="buy-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Postuler
+            </button>
+          </div>
+
+          <a href="/condidat-list-offre">
+            <!-- <img
+              src="assets\img\icons8-arrière-50.png"
+              style="margin-left: 20px; margin-top: 30px"
+              alt="Back"
+            /> -->
+
+            <i class="bi bi-arrow-left"></i> Back
+
+            <!-- Modal -->
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ offre.nom }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- <app-upload-cv></app-upload-cv> -->
+
+        <div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Charger votre CV:</h5> -->
+                  <form>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Nom et prénom</label
+                      >
+                      <input
+                        type="text"
+                        [value]="user.name"
+                        disabled
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Nom et prénom"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput2" class="form-label"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        [value]="user.email"
+                        disabled
+                        class="form-control"
+                        id="exampleFormControlInput2"
+                        placeholder="name@example.com"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <div class="custom-file">
+                        <input
+                          hidden
+                          type="file"
+                          class="custom-file-input"
+                          id="customFile"
+                          (change)="onFileSelected($event)"
+                        />
+                        <label
+                          class="custom-file-label"
+                          style="color: gray"
+                          for="customFile"
+                          ><small>Seulement format PDF...</small></label
+                        >
+                      </div>
+                    </div>
+                    <div
+                      id="drop-area"
+                      (dragover)="onDragOver($event)"
+                      (dragleave)="onDragLeave($event)"
+                      (drop)="onDrop($event)"
+                    >
+                      <p class="mb-0">Charger votre cv</p>
+                      <button
+                        type="button"
+                        class="btn btn-primary mt-2"
+                        (click)="browseFiles()"
+                      >
+                        Browse
+                      </button>
+                    </div>
+                  </form>
+
+                  <div
+                    class="mt-3 d-flex justify-content-start gap-1 flex-row flex-row"
+                    [class]="{ 'd-none': !selectedFile }"
+                  >
+                    <p>
+                      <strong>CV selectionner:</strong>
+                      {{ selectedFile?.name }}
+                    </p>
+                    <i class="fa-solid fa-x"></i>
+                    <button
+                      type="button"
+                      style="height: 30px; width: 30px; border-radius: 50%"
+                      class="d-flex align-items-center justify-content-center btn btn-danger"
+                      (click)="clearFile()"
+                    >
+                      <!-- <fa-icon [icon]="fa"></fa-icon> -->
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+
+                  <div class="mt-3" *ngIf="errors">
+                    <label>{{ errors }}</label>
+                  </div>
+
+                  <!-- <div class="mt-3">
+      <button
+        type="button"
+        class="btn btn-success"
+        [disabled]="!selectedFile"
+        (click)="uploadCV()"
+      >
+        Postuler
+      </button>
+    </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          [disabled]="!selectedFile"
+          (click)="uploadCV()"
+          class="btn btn-success"
+        >
+          Postuler
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <!-- Favicon -->
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <app-admin-sidebar></app-admin-sidebar>
+
+      <div class="main-wrapper">
+        <app-top-bar></app-top-bar>
+        <div class="col-md-10">
+          <div class="container" style="margin-top: 100px; margin-left: 120px">
+            <div class="section-title">
+              <h4>Liste des categories</h4>
+            </div>
+            <br />
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Catégorie</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of categories">
+                  <td>{{ c.id }}</td>
+                  <td>{{ c.libelle }}</td>
+                  <td>
+                    <img
+                      src="assets\img2\icons8-trash-20.png"
+                      (click)="deleteCategorie(c.id)"
+                      style="margin-right: 10px"
+                    />
+                    <img
+                      src="assets\img2\icons8-modifier-la-propriété-20.png"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+#drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#drop-area.drag-over {
+  background-color: #f5f5f5;
+}

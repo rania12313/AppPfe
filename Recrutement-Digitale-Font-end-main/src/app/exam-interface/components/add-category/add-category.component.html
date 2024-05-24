@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Dashboard | Dashboard</title>
+  <!-- Favicon -->
+ 
+</head>
+
+<body>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+<div class="page-flex">
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="main-wrapper">
+          <app-top-bar></app-top-bar>
+          <main class="main users chart-page" id="skip-target">
+            <div class="container">
+                <div class="section-title">
+                  <h4>Ajouter une categorie</h4>
+                </div>
+                <br>
+
+                <form (ngSubmit)="formSubmit()">
+
+                    <mat-form-field class="w100" appearance="outline">
+        
+                        <mat-label>Title</mat-label>
+        
+                        <input autofocus type="text" name="title" matInput placeholder="Enter here"
+                        [(ngModel)]="category.title">
+                        
+        
+                    </mat-form-field>
+
+                    <mat-form-field class="w100" appearance="outline">
+
+                        <mat-label>Description</mat-label>
+
+                        <textarea name="description" matInput placeholder="Enter category Description" 
+                        [(ngModel)]="category.description"
+                        rows="15">
+                    </textarea>
+
+                    </mat-form-field>
+
+                    <div class="container text-center mt15">
+
+                        <button mat-raised-button color="primary">Add</button>
+
+                    </div>
+                  
+                </form>
+                
+              </div>
+              
+</main>
+</div>
+</div></body></html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Dashboard | Dashboard</title>
+  <!-- Favicon -->
+ 
+</head>
+
+<body>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+<div class="page-flex">
+<app-admin-sidebar></app-admin-sidebar>
+
+<div class="main-wrapper">
+          <app-top-bar></app-top-bar>
+          <main class="main users chart-page" id="skip-target">
+            <div class="container" style="margin-top: 100px;">
+                <div class="section-title">
+                    <h4>Ajouter une categorie</h4>
+                  </div>
+                  <br>
+        <div class="col-md-6">
+          <form #categorieform="ngForm" (ngSubmit)="addCategorie()">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]='categorie.libelle' [ngModelOptions]="{standalone: true}" placeholder="Libelle">
+            </div>
+    <br>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</div>
+          </form>
+        </div>
+            </div>
+          </main>
+</div>
+        </div></body></html>
+      
+       
+        
+  
+
+
+ 
+  
+  
+
+
+
+ 
+    
+      
+          

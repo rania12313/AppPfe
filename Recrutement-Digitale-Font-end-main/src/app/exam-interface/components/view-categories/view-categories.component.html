@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <!-- Favicon -->
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" routerLink="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <app-admin-sidebar></app-admin-sidebar>
+
+      <div class="main-wrapper">
+        <app-top-bar></app-top-bar>
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <div class="section-title">
+              <h4>Liste des catégories</h4>
+            </div>
+            <br />
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header">All Categories</div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item" *ngFor="let c of categories">
+                        <i class="bi bi-category"></i>
+                        <h5 class="card-title">{{ c.title }}</h5>
+                        <p class="card-text">{{ c.description }}</p>
+                      </li>
+                    </ul>
+
+                    <div class="container text-center mt20">
+                      <a
+                        routerLink="/dashboarAdmin/add-category"
+                        class="btn btn-primary"
+                      >
+                        Ajouter nouveaux categories
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
